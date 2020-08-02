@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<base href="http://localhost/IOT/" /> <!-- đường dẫn tuyệt đối -->
+	<base href="/" /> <!-- đường dẫn tuyệt đối -->
 	<title>Website Quản Trị Trạm Quan Trắc Bãi Rác</title>
 
 	<!-- Custom fonts for this template-->
