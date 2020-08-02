@@ -50,6 +50,33 @@ function removeData(chart, lim) {
     chart.data.datasets[0].data.shift();  
   }
 }
+var time = "";
+
+function update() {
+  console.log("collect/get/"+keys['ma_tram']+"/"+keys['ma_cambien']+"/"+keys['ma_dailuong']);
+  $.get("collect/get/"+keys['ma_tram']+"/"+keys['ma_cambien']+"/"+keys['ma_dailuong'],function(val){
+    // console.log(val);
+    val = $.parseJSON(val);
+    // console.log(val);
+    value = val['val'];
+    newTime = val['time'];
+    if(newTime != time){     
+      console.log(val);
+      console.log(time);
+      addData(myLineChart,newTime,value);
+      removeData(myLineChart,20);
+      time = newTime;
+    }
+  });  
+}
+
+
+
+$(document).ready(function() {
+  setInterval(function () {
+      update();
+  },1000)
+});
 
 
 // Area Chart Example
@@ -107,29 +134,4 @@ var myLineChart = new Chart(ctx, {
 });
 
 
-var time = "";
 
-
-function update() {
-  console.log("collect/get/"+keys['ma_tram']+"/"+keys['ma_cambien']+"/"+keys['ma_dailuong']);
-  $.get("collect/get/"+keys['ma_tram']+"/"+keys['ma_cambien']+"/"+keys['ma_dailuong'],function(val){
-    // console.log(val);
-    val = $.parseJSON(val);
-    // console.log(val);
-    value = val['val'];
-    newTime = val['time'];
-    if(newTime != time){     
-      addData(myLineChart,newTime,value);
-      removeData(myLineChart,20);
-      time = newTime;
-    }
-  });  
-}
-
-
-
-$(document).ready(function() {
-  setInterval(function () {
-      update();
-  },1000)
-});
