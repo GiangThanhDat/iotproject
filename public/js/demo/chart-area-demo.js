@@ -91,6 +91,7 @@ $(document).ready(function() {
   setInterval(function () {
       update();
       browse(idStation,sensorMeasuresList);
+      myLineChart.update();
   },100);
 });
 
