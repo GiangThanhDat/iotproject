@@ -228,52 +228,20 @@ class collectController extends controller
 	function chart($ma_tram,$ma_cambien,$ma_dailuong)
 	{
 		// thông tin mặc định cho một trang show
-		$keys = ["ma_tram"=>$ma_tram,"ma_cambien"=>$ma_cambien,"ma_dailuong"=>$ma_dailuong];
-		$dataObj = new data;
-		$getSensorMeasures = "SELECT DISTINCT `ma_cambien`, `ma_dailuong` FROM giatri WHERE  `ma_tram` = '$ma_tram'";
-		$number_of_sensors = "SELECT DISTINCT `ma_cambien` FROM `giatri` WHERE `ma_tram` = '$ma_tram'";	
-		$result = $dataObj->execute($getSensorMeasures);	
-		$result2 = $dataObj->execute($number_of_sensors);		
-		$cambienObject = $this->model("cambien");
-		$listSensorMeasures = [];
-		$listSensorOfStation = [];
-		if($result2){
-			while ($row = $result2->fetch_assoc()) {
-				$sensorKey = $row['ma_cambien'];
-				array_push($listSensorOfStation,json_decode($cambienObject->getByKey($sensorKey),true));
-			}
-		}
-
-		if($result){
-			while ($row = $result->fetch_assoc()) {				
-				array_push($listSensorMeasures,$row);
-			}	
-		}
 		$model = "tramquantrac";
 		$model_view = strtolower($model)."-view";
 		$pages		= "chart-type";
-
 		$nguoiquanlyObject = $this->model("nguoiquanly");
 		$nguoiquanlyObj = $nguoiquanlyObject->getByKey($_SESSION['taikhoan_nql'],$_SESSION['adm']);
-
-		$donvido = $this->model("donvido");
-		$donvidoList = $donvido->listAll();
-
-		$tramquantracObject = $this->model("tramquantrac");
-		$tramquantracObj = $tramquantracObject->getByKey($ma_tram);
-
-		$dataSend = [
-				"model-view"=>$model_view, // cambien-view
-				"model"		=>$model, // CamBien
-				"pages"		=>$pages,					
-				"nql_obj"   =>$nguoiquanlyObj,
-				"tram_obj"  =>$tramquantracObj,
-				"keys"		 =>json_encode($keys),
-				"unitsList" =>$donvidoList,
-				"sensorsStationList" =>json_encode($listSensorOfStation),
-				"sensorMeasuresList"=>json_encode($listSensorMeasures)
-			];			
-		$this->view("masterLayout",$dataSend);				
+		$keys = ["ma_tram"=>$ma_tram,"ma_cambien"=>$ma_cambien,"ma_dailuong"=>$ma_dailuong];
+		$data = [
+			"model-view" =>$model_view, //cambien-view
+			"model"		 =>$model, //CamBien
+			"pages"		 =>$pages,
+			"keys"		 =>json_encode($keys),
+			"nql_obj"	 =>$nguoiquanlyObj
+		];
+		$this->view("masterLayout",$data);
 	}
 
 	//input string : 2020-07-28 15:36:40=1_1_1=123
