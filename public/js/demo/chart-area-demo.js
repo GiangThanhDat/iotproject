@@ -33,6 +33,20 @@ function browse(idStation,sensorMeasuresList) {
   });
 }
 
+function setValue(ma_tram,ma_cambien,ma_dailuong) {
+  $.get("collect/get/"+ma_tram+"/"+ma_cambien+"/"+ma_dailuong,function(val){
+    // console.log(val);
+    val = $.parseJSON(val);
+    // console.log(val);
+    value = val['val'];
+    time = val['time'];
+    var myTime = time.substr(11, 8);    
+    $('#val_'+ma_tram+"_"+ma_cambien+"_"+ma_dailuong).html(value);
+    $('#time_'+ma_tram+"_"+ma_cambien+"_"+ma_dailuong).html(myTime);
+    
+  });
+}
+
 
 console.log(keys);
 
@@ -52,12 +66,13 @@ function removeData(chart, lim) {
 }
 var time = "";
 
+
 function update() {
   console.log("collect/get/"+keys['ma_tram']+"/"+keys['ma_cambien']+"/"+keys['ma_dailuong']);
   $.get("collect/get/"+keys['ma_tram']+"/"+keys['ma_cambien']+"/"+keys['ma_dailuong'],function(val){
     // console.log(val);
     val = $.parseJSON(val);
-    // console.log(val);
+    
     value = val['val'];
     newTime = val['time'];
     if(newTime != time){     
@@ -65,7 +80,6 @@ function update() {
       console.log(time);
       addData(myLineChart,newTime,value);
       removeData(myLineChart,20);
-      myLineChart.update();
       time = newTime;
     }
   });  
@@ -76,7 +90,8 @@ function update() {
 $(document).ready(function() {
   setInterval(function () {
       update();
-  },1000)
+      browse(idStation,sensorMeasuresList);
+  },100);
 });
 
 
@@ -133,6 +148,5 @@ var myLineChart = new Chart(ctx, {
     }
   }
 });
-
 
 
