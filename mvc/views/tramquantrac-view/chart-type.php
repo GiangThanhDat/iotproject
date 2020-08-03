@@ -40,7 +40,7 @@
 
         ?>      
         <!-- style="width: 610px;" -->
-        <div class="card text-white text-center" style="width:300px;height: 300px;" > 
+        <div class="card text-white text-center" style="width:300px;height:auto;" > 
           <div class="card-header bg-success">
             <div class="row">
               <div class="col-md-10 bg-white text-black rounded">
