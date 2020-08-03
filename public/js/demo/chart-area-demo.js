@@ -80,7 +80,7 @@ function update() {
     var myTime = newTime.substr(11, 8);    
     if(myTime != time){     
       console.log(val);
-      console.log(myTime);
+      console.log(myTime + " " + time);
       addData(myLineChart,myTime,value);
       removeData(myLineChart,20);
       time = myTime;
