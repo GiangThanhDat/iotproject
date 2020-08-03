@@ -40,19 +40,24 @@
 
         ?>      
         <!-- style="width: 610px;" -->
-        <div class="card bg-primary text-white text-center" style="width:auto;height: auto;" > 
-          <div class="card-body">
+        <div class="card text-white text-center" style="width:300px;height: 300px;" > 
+          <div class="card-header bg-success">
             <div class="row">
-              <div class="col-md-12 border rounded">  
-                <hr>
-                <div class="row">
-                  <div class="col-6"><p class="card-text small"><?= $cambienObj['ten_cambien'] ?></p></div> 
-                  <div class="col-6"><p class="card-text small"><?= $dailuongObj['ten_dailuong'] ?></p></div>                   
-                </div>
-                <hr>
+              <div class="col-md-10 bg-white text-black rounded">
+                <p style="color: black;">Bảng Giá Trị-Đo Lường</p>
+                <!-- <p style="color: black;"><?= $ma_cambien ?>_<?= $ma_dailuong ?></p> -->
               </div>
             </div>
-          </div>  
+          </div>
+          <div class="card-body text-white">
+            <table class="table responsive border">
+              <tr>
+                <th class="border"><p class="card-text"><?= $cambienObj['ten_cambien'] ?></p>
+                </th>
+                <th class=" border"><?= $dailuongObj['ten_dailuong'] ?></th>
+              </tr>
+            </table>              
+          </div>
           <div class="card-footer bg-info">
             <a href="collect/chart/<?= $ma_tram ?>/<?= $ma_cambien ?>/<?= $ma_dailuong ?>" class="btn btn-primary btn-sm">Xem chi tiết</a>
           </div>        
@@ -62,10 +67,8 @@
   <!-- </div> -->
   <hr>
 </div>        
-        <script type="text/javascript">
-          const keys = <?= $data['keys'] ?>
-        </script>
-        <!-- Page level custom scripts -->
-        <script src="./public/js/demo/chart-area-demo.js"></script>
-        <script src="./public/js/demo/chart-pie-demo.js"></script>
-        <script src="./public/js/demo/chart-bar-demo.js"></script>
+<script type="text/javascript">
+  const keys = <?= $data['keys'] ?>;
+</script>
+<!-- Page level custom scripts -->
+<script src="./public/js/demo/chart-area-demo.js"></script>
