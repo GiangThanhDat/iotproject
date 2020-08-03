@@ -76,6 +76,7 @@ class collectController extends controller
 
 		$listSensorMeasures = [];
 		$listSensorOfStation = [];
+
 		if($result2){
 			while ($row = $result2->fetch_assoc()) {
 				$sensorKey = $row['ma_cambien'];
@@ -227,6 +228,15 @@ class collectController extends controller
 
 	function chart($ma_tram,$ma_cambien,$ma_dailuong)
 	{
+		$dataObj = new data;
+		$getSensorMeasures = "SELECT DISTINCT `ma_cambien`, `ma_dailuong` FROM giatri WHERE  `ma_tram` = '$ma_tram'";
+		$result = $dataObj->execute($getSensorMeasures);
+		$listSensorMeasures = [];
+		if($result){
+			while ($row = $result->fetch_assoc()) {				
+				array_push($listSensorMeasures,$row);
+			}
+		}
 		// thông tin mặc định cho một trang show
 		$model = "tramquantrac";
 		$model_view = strtolower($model)."-view";
@@ -239,7 +249,8 @@ class collectController extends controller
 			"model"		 =>$model, //CamBien
 			"pages"		 =>$pages,
 			"keys"		 =>json_encode($keys),
-			"nql_obj"	 =>$nguoiquanlyObj
+			"nql_obj"	 =>$nguoiquanlyObj,
+ 			"sensorMeasuresList"=>json_encode($listSensorMeasures)			
 		];
 		$this->view("masterLayout",$data);
 	}
