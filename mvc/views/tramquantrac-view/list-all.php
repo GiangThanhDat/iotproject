@@ -35,7 +35,7 @@
               <th>Tên Trạm</th>
               <th>Địa chỉ</th>
               <th class="text-center">Detail</th>
-              <!-- <th class="text-center">Delete</th> -->
+              <th class="text-center">Delete</th>
             </tr>
           </thead>
           <tfoot>
@@ -43,6 +43,7 @@
             <th>Tên Trạm</th>
             <th>Địa chỉ</th>
             <th class="text-center">Detail</th>
+            <th class="text-center">Delete</th>
           </tr>
         </tfoot>
         <tbody>               
