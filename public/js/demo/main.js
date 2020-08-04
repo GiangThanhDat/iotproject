@@ -110,10 +110,10 @@ var TramQuanTracColumnsDefine = [
 		'data': null,
 		'defaultContent': "<div href='#' class='btn btn-info btn-circle detail'><i class='fas fa-info-circle'></i></div>"
 	},
-	// { 
-	// 	'data': null,
-	// 	'defaultContent': "<div  class='btn btn-danger btn-circle remove'><i class='fas fa-trash'></i></div>"
-	// }
+	{ 
+		'data': null,
+		'defaultContent': "<div  class='btn btn-danger btn-circle remove'><i class='fas fa-trash'></i></div>"
+	}
 ];
 
 var config = [];
