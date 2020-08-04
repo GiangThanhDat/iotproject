@@ -192,6 +192,7 @@ class collectController extends controller
 		$model = "dailuongdo";
 		$model_view = strtolower($model)."-view";		
 		$pages		= "add-form";
+		$attachLists["donvido"] = $this->model("donvido")->listAll();
 		$dataSend = [
 			"model-view"=>$model_view, // cambien-view
 			"model"		=>$model, // CamBien
@@ -200,9 +201,9 @@ class collectController extends controller
 			"cb_obj"	=>$cambienObj,
 			"tram_obj"  =>$tramquantracObj,
 			"listMeasuresBySensor"=>json_encode($list),
-			"myList"=>json_encode($list)
+			"myList"=>json_encode($list),
+			'attachLists'=>$attachLists
 		];
-		
 		$this->view("masterLayout",$dataSend);
 	
 	}
