@@ -84,7 +84,7 @@ var myLineChart = new Chart(ctx, {
     datasets: [{
       label: dai_luong,
       backgroundColor: "#6abbfc",
-          borderColor: "#6abbfc",
+          borderColor: "##f0c2b4",
     }],
   },
   options: {
