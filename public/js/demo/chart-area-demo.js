@@ -83,8 +83,10 @@ var myLineChart = new Chart(ctx, {
     // labels: [1,2,3,4,5,6,7,8,9,10,11,12],
     datasets: [{
       label: dai_luong,
-      backgroundColor: "#6abbfc",
-          borderColor: "#f0c2b4",
+      backgroundColor: "#f7997c",
+          borderColor: "#045dbd",
+          borderWidth: 3,
+      hoverBackgroundColor:"#dfb0f5",
     }],
   },
   options: {
