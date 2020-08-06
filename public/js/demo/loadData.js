@@ -22,5 +22,5 @@ function setValue(ma_tram,ma_cambien,ma_dailuong) {
 $(document).ready(function(){
 	setInterval(function(){		
 		browse(idStation,sensorMeasuresList);
-	}, 500);
+	}, 100);
 });
