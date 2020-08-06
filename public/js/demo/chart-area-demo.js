@@ -71,7 +71,7 @@ function update() {
 $(document).ready(function() {
   setInterval(function () {
       update();
-  },500)
+  },100)
 });
 
 
