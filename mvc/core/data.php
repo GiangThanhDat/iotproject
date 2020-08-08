@@ -72,7 +72,7 @@ class data
  	protected function updateObject($model,$post_request,$keyName,$val)
  	{
  		 $updateStatement = $this->getUpdateStatement($model,$post_request,$keyName,$val);
- 		echo $updateStatement;
+//  		echo $updateStatement;
 		$result = $this->execute($updateStatement);
 		if($result){
 			return 1; // SUCCESS
