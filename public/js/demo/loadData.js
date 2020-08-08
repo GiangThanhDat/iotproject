@@ -15,7 +15,7 @@ function setValue(ma_tram,ma_cambien,ma_dailuong) {
 		min = val['min'];
 		myColor = val['mau'];
 		var myTime = time.substr(11, 8);
-		if (value > max) {
+		if (value > max || value <= min) {
 			console.log(value + " > " + max);
 			// console.log($('#val_'+ma_tram+"_"+ma_cambien+"_"+ma_dailuong));
 			// $('#val_'+ma_tram+"_"+ma_cambien+"_"+ma_dailuong).css("background-color", );			
