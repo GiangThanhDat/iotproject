@@ -104,11 +104,11 @@
 									<p class="card-text" id="val_<?= $ma_tram ?>_<?= $ma_cambien ?>_<?= $ma_dailuong ?>"></p>									
 								</th>
 								<th >
-									<p class="card-text"><?= $dailuongObj['ten_donvi'] ?></p>
+									<p class="card-text" id="dv_<?= $ma_tram ?>_<?= $ma_cambien ?>_<?= $ma_dailuong ?>"><?= $dailuongObj['ten_donvi'] ?></p>
 								</th>
 							</tr>
 							<tr>
-								<th colspan="2">
+								<th colspan="2" class="text-center">
 									<p class="card-text " id="time_<?= $ma_tram ?>_<?= $ma_cambien ?>_<?= $ma_dailuong ?>"></p>
 								</th>
 							</tr>
