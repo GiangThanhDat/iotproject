@@ -19,12 +19,12 @@
     <div class="col-md-4"></div>
   </div>
   <!-- Page Heading -->
-  <h1 class="h3 mb-2 text-gray-800" ><?php echo $data['model'] ?></h1>
-  <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>                
+  <h1 class="h3 mb-2 text-gray-800" >DANH SÁCH CÁC TRẠM ĐƯỢC LẮP ĐẶT</h1>
+  <p class="mb-4">Danh sách các trạm xử lý rác thải được biểu diễn với dạng bảng biểu</p>                
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">
-      <h6  class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+      <h6  class="m-0 font-weight-bold text-primary">DANH SÁCH TRẠM QUAN TRẮC</h6>
     </div>    
     <div class="card-body">
       <div class="table-responsive">
@@ -34,18 +34,10 @@
               <th>Mả Trạm</th>
               <th>Tên Trạm</th>
               <th>Địa chỉ</th>
-              <th class="text-center">Detail</th>
-              <th class="text-center">Delete</th>
+              <th class="text-center">Xem chi tiết</th>
+              <th class="text-center">Tháo gở trạm</th>
             </tr>
           </thead>
-          <tfoot>
-            <th>Mả Trạm</th>
-            <th>Tên Trạm</th>
-            <th>Địa chỉ</th>
-            <th class="text-center">Detail</th>
-            <th class="text-center">Delete</th>
-          </tr>
-        </tfoot>
         <tbody>               
         </tbody>
       </table>
