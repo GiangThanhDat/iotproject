@@ -9,10 +9,10 @@ function setValue(ma_tram,ma_cambien,ma_dailuong) {
 	$.get("collect/get/"+ma_tram+"/"+ma_cambien+"/"+ma_dailuong,function(val){
 		// console.log(val);
 		val = $.parseJSON(val);		
-		value = val['val'];
+		value = parseFloat(val['val']);
 		time = val['time'];
-		max = val['max'];
-		min = val['min'];
+		max = parseFloat(val['max']);
+		min = parseFloat(val['min']);
 		myColor = val['mau'];
 		var myTime = time.substr(11, 8);
 		if (value > max || value <= min) {
