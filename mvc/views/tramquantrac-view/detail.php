@@ -72,9 +72,6 @@
 									</button>
 									<ul class="dropdown-menu pull-right" style="padding: 10px 10px">
 										<li>
-											<a href="admin/show/dailuongdo" class="btn btn-outline-success btn-sm">Cài đặt chi tiết<i class="fa fa-cog"></i></a>
-										</li>
-										<li>
 											<form action="collect/editDL/<?= $ma_tram ?>/<?= $ma_dailuong ?>" method="POST">
 												<div class="input-group">
 													<span class="input-group-addon">Mức cảnh báo trên</span>
