@@ -126,6 +126,31 @@ class giatri extends data
 		return 0;
 	}
 
+	public function generalLoad($lim)
+	{
+		$load = "SELECT `tramquantrac`.`ten_tram`,
+		`cambien`.`ten_cambien`,
+		`dailuongdo`.`ten_dailuong`,
+		`giatri`,
+		`donvido`.`ten_donvi`, 
+		`thoigian`
+		FROM `giatri` JOIN `tramquantrac` ON(`giatri`.`ma_tram` = `tramquantrac`.`ma_tram`)
+		 LEFT JOIN `cambien` ON(`giatri`.`ma_cambien` = `cambien`.`ma_cambien`) 
+		 LEFT JOIN `dailuongdo` ON (`giatri`.`ma_dailuong` = `dailuongdo`.`ma_dailuong`) 
+		 LEFT JOIN donvido ON (`dailuongdo`.`ma_donvi` = `donvido`.`ma_donvi`) 
+		 ORDER BY `giatri`.`thoigian` 
+		 DESC LIMIT $lim";
+		 $result = $this->execute($load);		 
+		 $list = [];
+		 if ($result) {	
+		 	while ($row = $result->fetch_assoc()) {
+		 	    array_push($list, $row);
+		 	}		 	
+		 	return json_encode($list);
+		 }
+		 return false;
+	}
+
 
 	
 }

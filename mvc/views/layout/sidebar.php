@@ -16,7 +16,7 @@
     	<li class="nav-item">
     		<a class="nav-link" href="index.html">
     			<i class="fas fa-fw fa-tachometer-alt"></i>
-    			<span>Dashboard</span></a>
+    			<span>Danh sách tổng quát - Cập nhật thời gian thực</span></a>
     		</li>
 
     		<!-- Divider -->
