@@ -28,6 +28,7 @@ class collectController extends controller
 				$myfile = fopen(FILES.$fileName, "a+");			
 				fwrite($myfile, $dataString."\n");        
 				fclose($myfile); 
+				sleep(1);
 			}
 			if($amount != 0){
 				$read = file(FILES.$fileName);
