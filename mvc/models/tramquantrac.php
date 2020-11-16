@@ -22,6 +22,23 @@ class tramquantrac extends data
 		return 0;
 	}
 
+	function update($ChiTietTQT)
+	{
+		$key = $ChiTietTQT["ma_tram"];
+		return $this->updateObject('tramquantrac',$ChiTietTQT,'ma_tram',$key);
+	}
+
+	public function getLastID()
+	{
+		$result = $this->execute("SELECT `ma_tram` FROM tramquantrac ORDER BY `ma_tram` DESC LIMIT 1");		
+		if($result){
+			$lastID = $result->fetch_assoc();
+			return json_encode($lastID);
+		}
+		return 0;
+	}
+
+
 	public function remove($key){		
 		$result = $this->execute("DELETE FROM tramquantrac WHERE ma_tram = '$key'");		
 		if($result){			
@@ -31,15 +48,16 @@ class tramquantrac extends data
 	}
 
 	public function listAll(){
-		$result = $this->execute("SELECT * FROM tramquantrac LEFT JOIN `huyen` ON (`tramquantrac`.`ma_huyen` = `huyen`.`ma_huyen`) LEFT JOIN `tinh_tp` ON (`huyen`.`ma_tinhtp` = `tinh_tp`.`ma_tinhtp`)");
+		$result = $this->execute("SELECT * FROM tramquantrac");
 		$list = [];
 		if($result){
 			while ($row = $result->fetch_assoc()) {
 				array_push($list,[
 					"ma_tram"=>$row['ma_tram'],
 					"ten_tram"=>$row['ten_tram'], 
-					"chitietdiachi_tram" => ($row['chitietdiachi_tram']. ", Huyện " . $row['ten_huyen'] . ", Tỉnh " . $row['ten_tinhtp'] ),
-					"taikhoan_nql"=>$row['taikhoan_nql']
+					"vi_do" => $row['vi_do'],
+					"kinh_do" => $row['kinh_do'],
+					"taikhoan_quanly"=>$row['taikhoan_quanly']
 				]);
 			}			
 			return json_encode($list);	
@@ -48,10 +66,23 @@ class tramquantrac extends data
 	}
 
 	public function getByKey($key){
-		$result = $this->execute("SELECT * FROM tramquantrac  LEFT JOIN `huyen` ON (`tramquantrac`.`ma_huyen` = `huyen`.`ma_huyen`) LEFT JOIN `tinh_tp` ON (`huyen`.`ma_tinhtp` = `tinh_tp`.`ma_tinhtp`) WHERE ma_tram = '$key'");
+		$result = $this->execute("SELECT * FROM tramquantrac");
 		if($result){
 			$tramquantrac = $result->fetch_assoc();
 			return json_encode($tramquantrac);
+		}
+		return 0;
+	}
+
+	public function getStationsByUser($tendangnhap)
+	{
+		$result = $this->execute("SELECT * FROM tramquantrac WHERE `taikhoan_quanly` = '$tendangnhap'");
+		$list = [];
+		if($result){
+			while ($row = $result->fetch_assoc()) {
+				array_push($list,$row);				
+			}			
+			return json_encode($list);	
 		}
 		return 0;
 	}

@@ -31,12 +31,30 @@ class ajaxController extends controller
 		}
 	}
 
+	function update()
+	{		
+		$method = $_SERVER['REQUEST_METHOD'];
+		if ('PUT' === $method) {
+			echo (file_get_contents('php://input'));
+		}
+	}
+
 	function del($modelName, $key){
 		if($modelName && $key){
 			$model = $this->model("$modelName");
 			echo $model->remove($key);	
 		}else
 			echo 0;
+	}
+
+	function giatri_del($ma_tram,$ma_cambien,$ma_dailuong=[])
+	{
+		$giatri = $this->model("giatri");
+		if ($ma_dailuong != []) {
+			echo $giatri->remove_DL($ma_tram,$ma_cambien,$ma_dailuong);
+		}else{
+			echo $giatri->remove_CB($ma_tram,$ma_cambien);
+		}
 	}
 
 	function getListByFK($modelName, $FK){
@@ -59,6 +77,12 @@ class ajaxController extends controller
 			echo $this->model("nguoiquanly")->duplicateValidation($taikhoan_nql);
 		}
 	}	
+
+
+	function generalLoad()
+	{
+		echo $this->model("giatri")->generalLoad($lim);
+	}
 
 	function login(){
 		if($_SERVER['REQUEST_METHOD'] === 'POST'){
@@ -89,5 +113,26 @@ class ajaxController extends controller
 			}	
 		}
 	}
+
+	function getModelListAll($model)
+	{
+		$model = $this->model($model);
+		echo $model->listAll();
+	}
+
+	
+	function monthFilter($month=1)
+	{
+		echo $this->model("giatri")->monthFilter($month);
+	}
+
+
+	function dateFilter($myDate = 1)
+	{
+		echo $this->model("giatri")->dateFilter($myDate);
+	}
+
+	
+
 }
 ?>

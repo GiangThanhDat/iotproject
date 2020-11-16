@@ -27,13 +27,6 @@ function number_format(number, decimals, dec_point, thousands_sep) {
   return s.join(dec);
 }
 
-function browse(idStation,sensorMeasuresList) {
-  sensorMeasuresList.forEach(function(elem) {
-    setValue(idStation,elem['ma_cambien'],elem['ma_dailuong']);
-  });
-}
-
-
 console.log(keys);
 
 
@@ -42,6 +35,7 @@ function addData(chart, label, data) {
   chart.data.datasets[0].data.push(data);
   console.log(chart.data.labels);
   console.log(chart.data.datasets[0].data);
+  chart.update();
 }
 
 function removeData(chart, lim) {
@@ -49,7 +43,36 @@ function removeData(chart, lim) {
     chart.data.labels.shift();
     chart.data.datasets[0].data.shift();  
   }
+  chart.update();
 }
+
+var time = "";
+function update() {
+  console.log("collect/get/"+keys['ma_tram']+"/"+keys['ma_cambien']+"/"+keys['ma_dailuong']);
+  $.get("collect/get/"+keys['ma_tram']+"/"+keys['ma_cambien']+"/"+keys['ma_dailuong'],function(val){
+    // console.log(val);
+    val = $.parseJSON(val);
+    
+    value = val['val'];
+    newTime = val['time'];
+    if(newTime != time){     
+      console.log(val);
+      console.log(time);
+      addData(myLineChart,newTime,value);
+      removeData(myLineChart,20);
+      time = newTime;
+    }
+  });
+   
+}
+
+
+
+$(document).ready(function() {
+  setInterval(function () {
+      update();
+  },100);
+});
 
 
 // Area Chart Example
@@ -59,19 +82,11 @@ var myLineChart = new Chart(ctx, {
   data: {
     // labels: [1,2,3,4,5,6,7,8,9,10,11,12],
     datasets: [{
-      label: "Earnings",
-      lineTension: 0.3,
-      backgroundColor: "rgba(78, 115, 223, 0.05)",
-      borderColor: "rgba(78, 115, 223, 1)",
-      pointRadius: 3,
-      pointBackgroundColor: "rgba(78, 115, 223, 1)",
-      pointBorderColor: "rgba(78, 115, 223, 1)",
-      pointHoverRadius: 3,
-      pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
-      pointHoverBorderColor: "rgba(78, 115, 223, 1)",
-      pointHitRadius: 10,
-      pointBorderWidth: 2,
-      // data: [0, 10000, 5000, 15000, 10000, 20000, 15000, 25000, 20000, 30000, 25000, 40000],
+      label: dai_luong,
+      backgroundColor: "#f7997c",
+          borderColor: "#045dbd",
+          borderWidth: 3,
+      hoverBackgroundColor:"#dfb0f5"
     }],
   },
   options: {
@@ -107,29 +122,3 @@ var myLineChart = new Chart(ctx, {
 });
 
 
-var time = "";
-
-
-function update() {
-  console.log("collect/get/"+keys['ma_tram']+"/"+keys['ma_cambien']+"/"+keys['ma_dailuong']);
-  $.get("collect/get/"+keys['ma_tram']+"/"+keys['ma_cambien']+"/"+keys['ma_dailuong'],function(val){
-    // console.log(val);
-    val = $.parseJSON(val);
-    // console.log(val);
-    value = val['val'];
-    newTime = val['time'];
-    if(newTime != time){     
-      addData(myLineChart,newTime,value);
-      removeData(myLineChart,20);
-      time = newTime;
-    }
-  });  
-}
-
-
-
-$(document).ready(function() {
-  setInterval(function () {
-      update();
-  },1000)
-});

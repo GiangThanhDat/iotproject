@@ -93,3 +93,39 @@ body{
     font-weight: 600;
     color: #0062cc;
 }
+/*
+
+
+.map-popup-content {
+    width: 300px;
+}
+
+.map-popup-content .left {
+    float:left;
+    width: 40%;
+}
+.map-popup-content .left img {
+    width:100%;
+    height:100px;
+    margin: -15px 0 -15px -20px;
+    border-radius:12px;
+}
+
+.map-popup-content .right {
+    float:left;
+    width: 60%;
+}*/
+
+.clearfix {
+    clear:both;
+}
+
+
+.test .leaflet-popup-content-wrapper {
+      /*background: #2ce897;*/
+      /*color: #eee;*/
+      font-weight: bold;
+      font-size: 12px;
+      line-height: 24px;
+      border-radius: 0px;
+}

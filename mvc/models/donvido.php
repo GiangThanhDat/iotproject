@@ -25,6 +25,23 @@ class donvido extends data
 		}
 		return 0;
 	}	
+
+	public function getLastId()
+	{
+		$result = $this->execute("SELECT `ma_donvi` FROM donvido ORDER BY `ma_donvi` DESC LIMIT 1");
+		if($result){
+			$lastID = $result->fetch_assoc();
+			return json_encode($lastID);
+		}
+		return 0;
+	}
+
+	function update($DonViPostData)
+	{
+		$key = $DonViPostData["ma_donvi"];
+		return $this->updateObject('donvido',$DonViPostData,'ma_donvi',$key);
+	}
+
 	public function listAll(){
 		$result = $this->execute("SELECT * FROM donvido");
 		$list = [];

@@ -13,7 +13,7 @@ var CamBienColumnsDefine = [
 	// },
 	{ 
 		'data': null,
-		'defaultContent': "<div class='btn btn-danger btn-circle remove'><i class='fas fa-trash'></i></div>"
+		'defaultContent': "<div  class='btn btn-danger btn-circle cambien-remove'><i class='fas fa-trash'></i></div>"
 	}
 	];
 var DonViColumnsDefine = [
@@ -57,7 +57,7 @@ var DaiLuongColumnsDefine = [
 	// },
 	{ 
 		'data': null,
-		'defaultContent': "<div  class='btn btn-danger btn-circle remove'><i class='fas fa-trash'></i></div>"
+		'defaultContent':  "<div   class='btn btn-danger btn-circle dailuongdo-remove'><i class='fas fa-trash'></i></div>"
 	}
 ];
 var HuyenColumnsDefine = [
@@ -110,10 +110,10 @@ var TramQuanTracColumnsDefine = [
 		'data': null,
 		'defaultContent': "<div href='#' class='btn btn-info btn-circle detail'><i class='fas fa-info-circle'></i></div>"
 	},
-	// { 
-	// 	'data': null,
-	// 	'defaultContent': "<div  class='btn btn-danger btn-circle remove'><i class='fas fa-trash'></i></div>"
-	// }
+	{ 
+		'data': null,
+		'defaultContent': "<div  class='btn btn-danger btn-circle remove'><i class='fas fa-trash'></i></div>"
+	}
 ];
 
 var config = [];
@@ -140,16 +140,19 @@ function setAttachLists(){
 		console.log("list="+list);
 		objKeys = getKeyArray(list[0]);// lấy các key của 1 obj(mổi obj chỉ có key(index 0) và value(index 1) mặc định)
 		const selector = '#'+objKeys[0]; // quy ước selector sẽ là key của obj
+		const selectors = '.'+objKeys[0];
 		console.log("selector="+selector);
 		if(list){
 			console.log("objKeys="+objKeys);
+			console.log($(selector));
 			$(selector).append(setDropdownList(list,objKeys[0],objKeys[1]));
+			$(selectors).append(setDropdownList(list,objKeys[0],objKeys[1]));
 		}
 	}
 }
 
 
-var columnName; // get the column name when cick on any cell
+var columnName; // get the column name when cick on axny cell
 var row_num;
 var column_num;
 
@@ -222,6 +225,7 @@ $(document).ready(function() {
 	$("#alert-fail").hide();
 	$("#list-all-alert-success").hide();
 	$("#list-all-alert-fail").hide();	
+
 	const createdCell = function(cell) {
 		let original
 
@@ -269,6 +273,7 @@ $(document).ready(function() {
 
 	if(attachLists){
 		setAttachLists();
+		console.log("?");
 	}
 
 	if(obj !== null) {// có obj tức là đang ở trang detail
@@ -361,7 +366,6 @@ $(document).ready(function() {
 	});
 	// click vào nút xóa thì 
 	$(".remove").click(function(event) {
-
 		if(row_num !== 'undefine'){
 			var Ok = confirm("Are you sure?");
 			if (Ok) {
@@ -376,7 +380,46 @@ $(document).ready(function() {
 				});
 			}
 		}
-	});			
+	});		
+
+	$(".cambien-remove").click(function(event) {
+		if(row_num !== 'undefine'){
+			var Ok = confirm("Are you sure?");			
+			if (Ok) {
+				const row = dataTableList[row_num];							
+				if (ma_tram) {							
+					$.post('ajax/giatri_del/'+ma_tram+"/"+row[getKeyArray(row)[0]],function(response){					
+						if(response != 0){							
+							location.reload(true);
+						}else{
+							alert(response);
+						}
+					});	
+				}
+			}
+		}
+	});	
+
+
+	$(".dailuongdo-remove").click(function(event) {
+		if(row_num !== 'undefine'){
+			var Ok = confirm("Are you sure?");			
+			if (Ok) {
+				const row = dataTableList[row_num];							
+				// alert(ma_tram + " " + ma_cb);
+				if (ma_tram && ma_cb) {						
+					// alert('ajax/giatri_del/'+ma_tram+"/"+ma_cb+"/"+row[getKeyArray(row)[0]]);
+					$.post('ajax/giatri_del/'+ma_tram+"/"+ma_cb+"/"+row[getKeyArray(row)[0]],function(response){					
+						if(response != 0){							
+							location.reload(true);
+						}else{
+							alert(response);
+						}
+					});	
+				}
+			}
+		}
+	});	
 
 	$('.detail').click(function(event) {
 		if(row_num !== 'undefine'){

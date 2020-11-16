@@ -169,7 +169,7 @@ class nguoiquanly extends data
 					  FROM `".$this->model[$ad]."` 
 					  WHERE `taikhoan_nql` = '$taikhoan_nql' 
 					  AND `matkhau_nql` = '$matkhau_nql'";
-					  // echo $check;					  
+					  // echo $check;					
 			$result = $this->execute($check);
 			if ($result->num_rows != 0 ) {
 				$obj = $result->fetch_assoc();
@@ -177,6 +177,8 @@ class nguoiquanly extends data
 			}
 			return false;
 		}
+
+		
 
 		public function duplicateValidation($taikhoan_nql){
 			$check = "SELECT * 

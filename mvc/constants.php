@@ -11,5 +11,5 @@
 	define("DB_HOST", "localhost");
 	define("DB_USER", "root");
 	define("DB_PASS", "");
-	define("DB_NAME", "iot_project");
+	define("DB_NAME", "iot_project_improve");
 

@@ -69,9 +69,10 @@ class data
  		return $result;
  	}
 
+
  	protected function updateObject($model,$post_request,$keyName,$val)
  	{
- 		 $updateStatement = $this->getUpdateStatement($model,$post_request,$keyName,$val);
+ 		$updateStatement = $this->getUpdateStatement($model,$post_request,$keyName,$val);
  		echo $updateStatement;
 		$result = $this->execute($updateStatement);
 		if($result){

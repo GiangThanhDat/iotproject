@@ -14,7 +14,7 @@ $(document).ready(function() {
 	    	if(response.trim() != 0){
 	    		console.log(response);
 	    		$('#loi-dang-nhap').hide('slow/400/fast');
-	    		location.replace("admin");
+	    		location.replace("dashboard/index/10");
 	    	}else{	
 	    		console.log(response + " error");
 	    		$('#loi-dang-nhap').show('slow/400/fast');
