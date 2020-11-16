@@ -5,10 +5,25 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<<<<<<< HEAD
   <base href="http://192.168.1.2/IOT-Improve/" /> <!-- đường dẫn tuyệt đối -->
   <title>Giang Thành Đạt</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+=======
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <base href="/" /> <!-- đường dẫn tuyệt đối -->
+  <title>Website Quản Trị Trạm Quan Trắc Bãi Rác</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="./public/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="./public/css/style.css">
+  <!-- Custom styles for this template-->
+  <link href="./public/css/sb-admin-2.min.css" rel="stylesheet">
+>>>>>>> e9a1e4ca34a4ba28b6435b771e0b9be7f2858f01
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="./public/plugins/fontawesome-free/css/all.min.css">

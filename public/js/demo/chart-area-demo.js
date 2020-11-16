@@ -27,6 +27,10 @@ function number_format(number, decimals, dec_point, thousands_sep) {
   return s.join(dec);
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> e9a1e4ca34a4ba28b6435b771e0b9be7f2858f01
 console.log(keys);
 
 
@@ -45,14 +49,23 @@ function removeData(chart, lim) {
   }
   chart.update();
 }
+<<<<<<< HEAD
 
 var time = "";
+=======
+var time = "";
+
+
+>>>>>>> e9a1e4ca34a4ba28b6435b771e0b9be7f2858f01
 function update() {
   console.log("collect/get/"+keys['ma_tram']+"/"+keys['ma_cambien']+"/"+keys['ma_dailuong']);
   $.get("collect/get/"+keys['ma_tram']+"/"+keys['ma_cambien']+"/"+keys['ma_dailuong'],function(val){
     // console.log(val);
     val = $.parseJSON(val);
+<<<<<<< HEAD
     
+=======
+>>>>>>> e9a1e4ca34a4ba28b6435b771e0b9be7f2858f01
     value = val['val'];
     newTime = val['time'];
     if(newTime != time){     
@@ -62,8 +75,12 @@ function update() {
       removeData(myLineChart,20);
       time = newTime;
     }
+<<<<<<< HEAD
   });
    
+=======
+  });  
+>>>>>>> e9a1e4ca34a4ba28b6435b771e0b9be7f2858f01
 }
 
 
@@ -71,7 +88,11 @@ function update() {
 $(document).ready(function() {
   setInterval(function () {
       update();
+<<<<<<< HEAD
   },100);
+=======
+  },100)
+>>>>>>> e9a1e4ca34a4ba28b6435b771e0b9be7f2858f01
 });
 
 
@@ -86,7 +107,11 @@ var myLineChart = new Chart(ctx, {
       backgroundColor: "#f7997c",
           borderColor: "#045dbd",
           borderWidth: 3,
+<<<<<<< HEAD
       hoverBackgroundColor:"#dfb0f5"
+=======
+      hoverBackgroundColor:"#dfb0f5",
+>>>>>>> e9a1e4ca34a4ba28b6435b771e0b9be7f2858f01
     }],
   },
   options: {

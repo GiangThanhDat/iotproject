@@ -13,8 +13,13 @@ $(document).ready(function() {
 	    $.post('ajax/login', serializedData, function(response) {
 	    	if(response.trim() != 0){
 	    		console.log(response);
+<<<<<<< HEAD
 	    		$('#loi-dang-nhap').hide('slow/400/fast');
 	    		location.replace("dashboard/index/10");
+=======
+				$('#loi-dang-nhap').hide('slow/400/fast');
+				location.replace("dashboard/index/10");
+>>>>>>> e9a1e4ca34a4ba28b6435b771e0b9be7f2858f01
 	    	}else{	
 	    		console.log(response + " error");
 	    		$('#loi-dang-nhap').show('slow/400/fast');
